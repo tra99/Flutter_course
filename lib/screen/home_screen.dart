@@ -3,6 +3,7 @@
 // stf= Statefull
 
 import 'package:flutter/material.dart';
+import 'package:full_course_app/screen/profile_screen.dart';
 
 class MyHomeScreen extends StatelessWidget {
   const MyHomeScreen({super.key});
@@ -42,7 +43,9 @@ class MyHomeScreen extends StatelessWidget {
                 icon: Icon(Icons.search, color: Colors.white),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfileScreen()));
+                },
                 icon: Icon(Icons.settings, color: Colors.white),
               ),
             ],
