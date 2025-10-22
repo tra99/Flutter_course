@@ -7,6 +7,12 @@ class CustomAppBar extends StatelessWidget {
   final IconData? icon1;
   final IconData? icon2;
   final Color? titleColor;
+  final bool? centerTitle;
+  final Color? iconColorLeading;
+  final IconData? iconLeading;
+  final bool? isShowIcon1;
+  final bool? isShowIcon2;
+  final bool? isShowText;
   const CustomAppBar({
     super.key,
     required this.name,
@@ -15,41 +21,72 @@ class CustomAppBar extends StatelessWidget {
     this.icon1,
     this.icon2,
     this.titleColor,
+    this.centerTitle,
+    this.iconColorLeading,
+    this.iconLeading,
+    this.isShowIcon1,
+    this.isShowIcon2,
+    this.isShowText
   });
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.blue.shade600,
+      // backgroundColor: Colors.blue.shade600,
       title: Text(
         "Hello, Jane!",
-        style: TextStyle(color: titleColor, fontSize: 16),
+        style: TextStyle(color: titleColor, fontSize: 18, fontWeight: FontWeight.bold),
       ),
-      leading: IconButton(onPressed: (){Navigator.pop(context);},icon: Icon(Icons.arrow_back_ios_new_outlined,color:Colors.white,),),
+      centerTitle: centerTitle,
+      leading: IconButton(
+        onPressed: () {
+          Navigator.pop(context);
+        },
+        icon: Icon(iconLeading, color: iconColorLeading),
+      ),
       actions: [
         Row(
           children: [
-            IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.file_copy_outlined, color: Colors.white),
-            ),
-            SizedBox(width: 10),
-            IconButton(
+            isShowIcon1 == true
+                ? Stack(
+                  children: [
+                    IconButton(
+                        onPressed: () {
+
+                        },
+                        icon: Icon(icon1,),
+                      ),
+                    Positioned(right: 4,top: 4,child: Container(
+                      width: 16,
+                      height: 16,
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 40, 15, 107),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Center(child: Text("8",style: TextStyle(fontSize: 10,color: Colors.white),)),
+                    ))
+                  ],
+                )
+                : Container(),
+            // SizedBox(width: 10),
+            isShowIcon2 == true ?IconButton(
               onPressed: () {},
               icon: Icon(Icons.print_outlined, color: Colors.white),
-            ),
+            ): Container(),
             SizedBox(width: 10),
-            Container(
+            isShowText == true?Container(
               width: 50,
               height: 30,
               decoration: BoxDecoration(
                 color: Colors.red,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: Center(child: Text("10+", style: TextStyle(color: titleColor))),
-            ),
+              child: Center(
+                child: Text("10+", style: TextStyle(color: titleColor)),
+              ),
+            ): Container(),
             SizedBox(width: 10),
-            Container(
+            isShowText == true?Container(
               width: 50,
               height: 50,
               decoration: BoxDecoration(
@@ -65,7 +102,7 @@ class CustomAppBar extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-            ),
+            ): Container(),
           ],
         ),
       ],

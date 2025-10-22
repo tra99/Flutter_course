@@ -39,12 +39,15 @@ class MyHomeScreen extends StatelessWidget {
                 icon: Icon(Icons.favorite, color: Colors.white),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> ProfileScreen()));
+                },
                 icon: Icon(Icons.search, color: Colors.white),
               ),
               IconButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfileScreen()));
+                  print("Test me");
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> ProfileScreen()));
                 },
                 icon: Icon(Icons.settings, color: Colors.white),
               ),
