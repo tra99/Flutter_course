@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:full_course_app/screen/employee_screen.dart';
 import 'package:full_course_app/screen/home_screen.dart';
+import 'package:full_course_app/screen/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home:  EmployeeScreen(),
+      home:  LoginScreen(),
     );
   }
 }
